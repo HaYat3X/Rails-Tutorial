@@ -2,6 +2,8 @@
   <p>名前：<%= data.name %></p>
   <p>
     <%= link_to "update", "/edit/#{data.id}" %>
+    <%= button_to 'destroy', "/destroy/#{data.id}", {method: :delete }%>
   </p>
   <hr>
 <% end %>
+<%= link_to "new", "/new" %>

@@ -20,18 +20,18 @@ class TopsController < ApplicationController
     @user = User.new(params.require(:user).permit(:name))
 
     if @user.save
-      redirect_to action: :index
+      redirect_to action: :users
     else
       render :new
     end
   end
 
-  # ! usersテーブルの情報を更新する (更新フォームの表示)
+  # ! usersテーブルの情報を更新するメソッド (更新フォームの表示)
   def edit
     @user = User.find(params[:id])
   end
 
-  # ! usersテーブルの情報を更新する （DB更新）
+  # ! usersテーブルの情報を更新するメソッド （DB更新）
   def update
     @user = User.find(params[:id])
 
@@ -39,6 +39,17 @@ class TopsController < ApplicationController
       redirect_to action: :users
     else
       render :edit
+    end
+  end
+
+  # ! usersテーブルの情報を削除するメソッド
+  def destroy
+    @user = User.find(params[:id])
+
+    if @user.destroy
+      redirect_to action: :users
+    else
+      redirect_to action: :users
     end
   end
 end
