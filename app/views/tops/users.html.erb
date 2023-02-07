@@ -1,0 +1,7 @@
+<% @datas.each do |data| %>
+  <p>名前：<%= data.name %></p>
+  <p>
+    <%= link_to "update", "/edit/#{data.id}" %>
+  </p>
+  <hr>
+<% end %>
